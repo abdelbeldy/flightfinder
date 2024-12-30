@@ -1,9 +1,15 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException,Request
 from pydantic import BaseModel
 import json
 from fast_flights import FlightData, Passengers, create_filter, get_flights
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("uvicorn")
 
 app = FastAPI()
+
+
 
 class FlightRequest(BaseModel):
     origin: str
